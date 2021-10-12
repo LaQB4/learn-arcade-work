@@ -1,0 +1,20 @@
+import arcade
+
+
+arcade.open_window(600, 600, "Moving Stickman")
+
+
+arcade.set_background_color(arcade.csscolor.SKY_BLUE)
+
+
+arcade.start_render()
+
+arcade.draw_ellipse_outline(300, 350, 120, 120, arcade.csscolor.BLACK, 3) #da head
+arcade.draw_line(300, 170, 300, 290, arcade.color.BLACK, 3) # chest
+arcade.draw_line(300, 210, 400, 290, arcade.color.BLACK, 3) # right arm
+arcade.draw_line(300, 210, 200, 290, arcade.color.BLACK, 3) # left arm
+arcade.draw_line(300, 170, 250, 100, arcade.color.BLACK, 3) # left leg
+arcade.draw_line(300, 170, 350, 100, arcade.color.BLACK, 3) # right leg
+arcade.finish_render()
+
+arcade.run()
