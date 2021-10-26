@@ -1,0 +1,61 @@
+import arcade
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
+#def make_it_rain(x,y):
+"""Makes rain but didn't have time to finish"""
+    #arcade.draw_rectangle_filled(400 , 550 , 3 , 25 ,arcade.csscolor.BLUE)
+
+
+def draw_grass():
+    """ Draw the ground """
+    arcade.draw_lrtb_rectangle_filled(4, SCREEN_WIDTH, SCREEN_HEIGHT / 4, 4, arcade.color.WHITE)
+
+
+def draw_stick(x, y):
+    """ Draw stick person """
+
+    arcade.draw_ellipse_outline(300 + x, 250 + y, 120, 120, arcade.csscolor.BLACK, 3)  # head
+    arcade.draw_line(300 + x, 70 + y, 300 + x, 190 + y, arcade.color.BLACK, 3)  # chest
+    arcade.draw_line(300 + x, 110 + y, 400 + x, 190 + y, arcade.color.BLACK, 3)  # right arm
+    arcade.draw_line(300 + x, 110 + y, 200 + x, 190 + y, arcade.color.BLACK, 3)  # left arm
+    arcade.draw_line(300 + x, 70 + y, 250 + x, 0 + y, arcade.color.BLACK, 3)  # left leg
+    arcade.draw_line(300 + x, 70 + y, 350 + x, 0 + y, arcade.color.BLACK, 3)  # right leg
+
+def rolling_ball(x,y):
+    """Draws the ball he will chase"""
+    arcade.draw_ellipse_filled(800 + x, 40 + y, 75, 75,arcade.csscolor.RED)
+
+def on_draw(delta_time):
+    """ Draw everything """
+    arcade.start_render()
+
+    draw_grass()
+    draw_stick(on_draw.snow_person1_x, 140)
+    rolling_ball(on_draw.rolling_ball1_x, 140)
+
+    # Add one to the x value, making the snow person move right
+    # Negative numbers move left. Larger numbers move faster.
+    on_draw.snow_person1_x -= 4
+    on_draw.rolling_ball1_x -=5
+    on_draw.make_it_rain_y -=5
+# Create a value that our on_draw.snow_person1_x will start at.
+on_draw.snow_person1_x = 150
+on_draw.rolling_ball1_x = 150
+on_draw.make_it_rain_y = 21
+
+
+
+def main():
+    arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
+    arcade.set_background_color(arcade.color.LIGHT_BLUE)
+    rolling_ball(0, 0)
+
+
+    arcade.schedule(on_draw, 1/60)
+    arcade.run()
+
+
+# Call the main function to get the program started.
+main()
