@@ -1,11 +1,11 @@
-f = 0
+score_giver = 0
 
 #Question 1
 answer_q_1 = input("What is 9+10 ")
 if answer_q_1 == "21":
     print("You know your memes.")
     print()
-    f+=1
+    score_giver += 1
 else:
     print("You should educate yourself in past memes")
     print()
@@ -15,7 +15,7 @@ answer_q_2 = input("What is the answer to life")
 if answer_q_2 == "42":
     print("You've read the Hitchhiker's Guide to the Galaxy and are correct")
     print()
-    f += 1
+    score_giver += 1
 else:
     print("READ because that is wrong")
     print()
@@ -25,9 +25,9 @@ answer_q_3 = input("What is Facebook's name")
 if answer_q_3 == "Meta" or answer_q_3 == "meta":
     print("Correct")
     print()
-    f += 1
+    score_giver += 1
 else:
-    print("Look it up")
+    print("Look it up as that is incorrect")
     print()
 
 #Question 4
@@ -35,7 +35,7 @@ answer_q_4 = input("How much do Scooby Snacks cost in the campus center in dolla
 if answer_q_4 == "0.50":
     print("Nice")
     print()
-    f += 1
+    score_giver += 1
 else:
     print("Nope")
     print()
@@ -45,23 +45,23 @@ answer_q_5 = input("Is this made of if statements")
 if answer_q_5 == "Yes" or answer_q_5 == "yes":
     print("Correct")
     print()
-    f += 1
+    score_giver += 1
 else:
     print("Wrong")
     print()
 
 #Prints the percentage
-if f == 0:
+if score_giver == 0:
     print("You got a 0%")
-if f == 1:
+if score_giver == 1:
     print("You got a 20%")
-if f == 2:
+if score_giver == 2:
     print("You got a 40%")
-if f == 3:
+if score_giver == 3:
     print("You got a 60%")
-if f == 4:
+if score_giver == 4:
     print("You got an 80%")
-if f == 5:
+if score_giver == 5:
     print("100%, nice job")
 
 
