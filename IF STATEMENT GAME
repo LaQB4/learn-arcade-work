@@ -32,7 +32,7 @@ else:
 
 #Question 4
 answer_q_4 = input("How much do Scooby Snacks cost in the campus center in dollars")
-if answer_q_4 == "0.50":
+if answer_q_4 == "0.75":
     print("Nice")
     print()
     score_giver += 1
