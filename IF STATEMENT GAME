@@ -3,7 +3,7 @@ score_giver = 0
 #Question 1
 answer_q_1 = input("What is 9+10 ")
 if answer_q_1 == "21":
-    print("You know your memes.")
+    print("You know your memes and in my eyes are correct")
     print()
     score_giver += 1
 else:
