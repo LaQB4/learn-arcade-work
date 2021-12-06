@@ -1,0 +1,101 @@
+import random
+
+
+def main():
+    # Variables
+    ly_traveled = 0  # ly is for light years
+    sleep_needed = 0
+    sleep_left = 3
+    aliens_traveled = -20
+    rocket_refill_needed = 0
+    done = False
+    found_asteroid = False
+    asteroid_chance = random.randrange(1, 21)
+
+    print("Welcome to Rocket!")
+    print("You have stolen a rocket to make your way back to human civilization.")
+    print("""The aliens want their rocket back and are chasing you down! Survive your space trek and don't get caught by 
+the aliens.""")
+    # Beginning of while loop
+    while not done:
+        aliens_diff = ly_traveled - aliens_traveled
+        full_speed = random.randrange(10, 21)
+        moderate_speed = random.randrange(5, 13)
+
+        print("""
+A. Sleep.
+B. Ahead moderate speed.
+C. Ahead full speed.
+D. Refill from reserves.
+E. Status check.
+Q. Quit.""")
+        # Which inputs do what
+        user_input = input("What is your choice? ")
+        if user_input.lower() == "q":
+            done = True
+            print()
+            print("You've quit the game")
+        elif user_input.lower() == "e":
+            print()
+            print("Light years traveled: ", ly_traveled)
+            print("Time left to sleep: ", sleep_left)
+            print("The aliens are", aliens_diff, "light years behind you")
+            print("Your level of tiredness is,", sleep_needed)
+        elif user_input.lower() == "d":
+            print()
+            rocket_refill_needed *= 0
+            aliens_traveled += random.randrange(7, 15)
+            print("The rocket has been fully refilled")
+        elif user_input.lower() == "c":
+            print()
+            ly_traveled += full_speed
+            print("You flew", full_speed, "light years")
+            sleep_needed += 1
+            rocket_refill_needed += random.randrange(1, 4)
+            aliens_traveled += random.randrange(7, 15)
+        elif user_input.lower() == "b":
+            print()
+            ly_traveled += moderate_speed
+            print("You flew", moderate_speed, "light years")
+            sleep_needed += 1
+            rocket_refill_needed += 1
+            aliens_traveled += random.randrange(7, 15)
+        elif user_input.lower() == "a":
+            print()
+            if sleep_left == 0:
+                print("You have no more time left to sleep.")
+            else:
+                sleep_left -= 1
+                sleep_needed *= 0
+                print("You have", sleep_left, "opportunities to sleep and are fully rested.")
+        # if certain variable are low
+        if 4 < sleep_needed < 8:
+            print("You are tired and should get some rest soon")
+        elif sleep_needed > 8:
+            print("You went crazy due to sleep deprivation")
+            done = True
+        if 5 <= rocket_refill_needed < 8:
+            print("Your rocket is low on fuel")
+        elif rocket_refill_needed > 8:
+            print("Your rocket has lost all fuel and will now drift in space forever")
+            done = True
+        if 0 < aliens_diff <= 15:
+            print("The aliens are getting close")
+        elif aliens_traveled >= ly_traveled:
+            print("You were too slow and were caught by the aliens")
+            done = True
+        if ly_traveled >= 200:
+            print("You made it back to civilization and won the game")
+            done = True
+        # 1 in 20 chance of getting an asteroid
+        if user_input.lower() == "b" or user_input.lower() == "c":
+            if asteroid_chance == 4:
+                found_asteroid = True
+        if found_asteroid:
+            print("You've found an asteroid! Take this opportunity to gather supplies.")
+            rocket_refill_needed *= 0
+            sleep_needed *= 0
+            sleep_left = 3
+
+
+main()
